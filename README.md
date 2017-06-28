@@ -6,6 +6,8 @@ This creates a form group with 3 separate input fields (day, month, year) with v
 
 ![Demo](https://github.com/emreavsar/date-form-component-example/raw/master/demo.gif)
 
+Demo: https://emreavsar.github.io/date-form-component-example/
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -17,6 +19,19 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Build github demo page
+
+Install angular-cli-ghpages:
+```
+npm i -g angular-cli-ghpages
+```
+
+Run `ng build --prod --base-href "https://emreavsar.github.io/date-form-component-example/"` to build the project with github pages base href.
+
+Upload build to github page with `angular-cli-ghpages`.
+
+_(see also http://aniri.ro/geek/development/how-to-host-an-angular2-app-on-github-pages-using-angular-cli/)_
 
 ## Running unit tests
 
