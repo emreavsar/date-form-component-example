@@ -15,7 +15,7 @@
     <input mdInput formControlName="year" placeholder="Year (YYYY)" autocomplete="off" maxlength="4" />
     <md-error *ngIf="dateGroup.controls.year.hasError('required')">Required</md-error>
     <md-error *ngIf="!dateGroup.controls.year.hasError('required') && dateGroup.controls.year.hasError('min')">Year must be greater than {{minYear}}</md-error>
-    <md-error *ngIf="!dateGroup.controls.year.hasError('required') && dateGroup.controls.year.hasError('max')">Year must be lower than {{maxYear}}</md-error>
+    <md-error *ngIf="!dateGroup.controls.year.hasError('required') && dateGroup.controls.year.hasError('max')">Year must be lower than or equal to {{maxYear}}</md-error>
     <md-error *ngIf="!dateGroup.controls.year.hasError('required') && dateGroup.controls.year.hasError('yearNotValid')">Not valid (4 digit)</md-error>
   </md-input-container>
   <md-error *ngIf="dateGroup.errors?.dateNotValid">Date is not valid. Please select a valid date.</md-error>

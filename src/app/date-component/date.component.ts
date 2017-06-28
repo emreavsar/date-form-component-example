@@ -1,33 +1,39 @@
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'date',
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.css']
 })
-export class DateComponent {
+export class DateComponent implements OnInit {
 
   // default min-year
-  readonly minYear = 1900;
+  @Input()
+  minYear = 1900;
 
-  // max year is not in future
-  readonly maxYear = new Date().getFullYear();
+  // max year is by default not in future
+  @Input()
+  maxYear = new Date().getFullYear();
 
-  public dateGroup = this.fb.group({
-    day: ['', Validators.compose([Validators.required, DaysFormatValidator()])],
-    month: ['', Validators.compose([Validators.required, MonthsFormatValidator()])],
-    year: ['',
-      Validators.compose([
-        Validators.required,
-        Validators.min(this.minYear),
-        Validators.max(this.maxYear),
-        YearsFormatValidator()
-      ])
-    ]
-  }, { validator: DateFormatValidator('day', 'month', 'year') });
+  public dateGroup;
 
   constructor(private fb: FormBuilder) {
+  }
+
+  ngOnInit(): void {
+    this.dateGroup = this.fb.group({
+      day: ['', Validators.compose([Validators.required, DaysFormatValidator()])],
+      month: ['', Validators.compose([Validators.required, MonthsFormatValidator()])],
+      year: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.min(this.minYear),
+          Validators.max(this.maxYear),
+          YearsFormatValidator()
+        ])
+      ]
+    }, { validator: DateFormatValidator('day', 'month', 'year') });
   }
 }
 
