@@ -1,3 +1,4 @@
+import { DateModule } from './date-component/date.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,15 +12,11 @@ import { MdAutocompleteModule, MdButtonModule, MdCheckboxModule, MdInputModule }
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DateComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MdInputModule
+    DateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
