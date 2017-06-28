@@ -1,0 +1,22 @@
+<form [formGroup]="dateGroup">
+  <md-input-container>
+    <input mdInput formControlName="day" placeholder="Day (DD)" autocomplete="off" maxlength="2" />
+    <md-error *ngIf="dateGroup.controls.day.hasError('required')">Required</md-error>
+    <!--first part with dateGroup.controls.day.hasError('required') prevents showing the not valid when required is already shown. -->
+    <md-error *ngIf="!dateGroup.controls.day.hasError('required') && dateGroup.controls.day.hasError('dayNotValid')">Not valid (01-31)</md-error>
+  </md-input-container>
+
+  <md-input-container>
+    <input mdInput formControlName="month" placeholder="Month (MM)" autocomplete="off" maxlength="2" />
+    <md-error *ngIf="dateGroup.controls.month.hasError('required')">Required</md-error>
+    <md-error *ngIf="!dateGroup.controls.month.hasError('required')! && dateGroup.controls.month.hasError('monthNotValid')">Not valid (01-12)</md-error>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput formControlName="year" placeholder="Year (YYYY)" autocomplete="off" maxlength="4" />
+    <md-error *ngIf="dateGroup.controls.year.hasError('required')">Required</md-error>
+    <md-error *ngIf="!dateGroup.controls.year.hasError('required') && dateGroup.controls.year.hasError('min')">Year must be greater than {{minYear}}</md-error>
+    <md-error *ngIf="!dateGroup.controls.year.hasError('required') && dateGroup.controls.year.hasError('max')">Year must be lower than {{maxYear}}</md-error>
+    <md-error *ngIf="!dateGroup.controls.year.hasError('required') && dateGroup.controls.year.hasError('yearNotValid')">Not valid (4 digit)</md-error>
+  </md-input-container>
+  <md-error *ngIf="dateGroup.errors?.dateNotValid">Date is not valid. Please select a valid date.</md-error>
+</form>
